@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Panel</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+    <div class="navbar">
+
+        <a href="adminHome.html">
+            <button>Home</button>
+        </a>
+
+        <a href="adminOrders.html">
+            <button>Orders</button>
+        </a>
+
+    </div>
+
+    <h1>Admin Food Management</h1>
+
+    <div class="food-card">
+
+        <input
+            type="text"
+            id="foodName"
+            placeholder="Food Name"
+        >
+
+        <input
+            type="number"
+            id="foodPrice"
+            placeholder="Food Price"
+        >
+
+        <input
+            type="text"
+            id="foodImage"
+            placeholder="Image Name (pizza.jpg)"
+        >
+
+        <button onclick="addFood()">
+
+            Add Food
+
+        </button>
+
+    </div>
+
+    <h2>All Foods</h2>
+
+    <div id="admin-foods"></div>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
