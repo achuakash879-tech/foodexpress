@@ -1,26 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Admin Orders</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FoodExpress Admin — View and manage all customer orders.">
+    <title>Admin Orders — FoodExpress</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <h1>All Orders</h1>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🍔</span>
+            <span>FoodExpress</span>
+        </a>
+        <button class="hamburger" onclick="toggleNav()" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links" id="navLinks">
+            <a href="admin.html">Dashboard</a>
+            <a href="adminOrders.html" class="active">Orders</a>
+            <a href="index.html">← Exit Admin</a>
+        </div>
+    </nav>
 
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+        <h1>📋 Order Management</h1>
+        <p>View and update all customer orders</p>
+    </div>
+
+    <!-- ADMIN ORDERS -->
     <div id="admin-orders"></div>
 
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2026 <span>FoodExpress</span>. All rights reserved.</p>
+    </footer>
+
     <script src="app.js"></script>
-    <link rel="stylesheet" href="style.css">
-
 </body>
-
 </html>

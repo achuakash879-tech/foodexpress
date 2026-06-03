@@ -5,6 +5,8 @@ const router = express.Router();
 const foodController =
 require('../controllers/foodController');
 
+const { verifyToken, verifyAdmin } = require('../middleware/authMiddleware');
+
 
 // GET ALL FOODS
 
@@ -22,6 +24,10 @@ router.post(
 
     '/add',
 
+    verifyToken,
+
+    verifyAdmin,
+
     foodController.addFood
 );
 
@@ -32,6 +38,10 @@ router.delete(
 
     '/delete/:id',
 
+    verifyToken,
+
+    verifyAdmin,
+
     foodController.deleteFood
 );
 
@@ -41,6 +51,10 @@ router.delete(
 router.put(
 
     '/update/:id',
+
+    verifyToken,
+
+    verifyAdmin,
 
     foodController.updateFood
 );

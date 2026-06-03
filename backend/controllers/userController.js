@@ -9,23 +9,24 @@ const jwt = require('jsonwebtoken');
 
 exports.registerUser = async (req, res) => {
 
-    const { name, email, password } = req.body;
+    const { name, email, password, role } = req.body;
 
     try {
 
         const hashedPassword = await bcrypt.hash(password, 10);
+        const userRole = role || 'customer';
 
         const sql = `
             INSERT INTO users
-            (name, email, password)
-            VALUES (?, ?, ?)
+            (name, email, password, role)
+            VALUES (?, ?, ?, ?)
         `;
 
         db.query(
 
             sql,
 
-            [name, email, hashedPassword],
+            [name, email, hashedPassword, userRole],
 
             (err, result) => {
 
@@ -104,7 +105,8 @@ exports.loginUser = (req, res) => {
 
             {
                 id: user.id,
-                email: user.email
+                email: user.email,
+                role: user.role
             },
 
             process.env.JWT_SECRET,
@@ -118,7 +120,8 @@ exports.loginUser = (req, res) => {
 
             message: 'Login Successful',
 
-            token
+            token,
+            role: user.role
         });
     });
 };

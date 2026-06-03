@@ -1,122 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Login</title>
-
+    <meta name="description" content="Login to your FoodExpress account to order food.">
+    <title>Login — FoodExpress</title>
     <link rel="stylesheet" href="style.css">
-
 </head>
-
 <body>
 
-    <div class="auth-container">
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🍔</span>
+            <span>FoodExpress</span>
+        </a>
+        <button class="hamburger" onclick="toggleNav()" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links" id="navLinks"></div>
+    </nav>
 
-        <h2>User Login</h2>
+    <!-- LOGIN FORM -->
+    <div class="auth-page">
+        <div class="auth-container">
+            <div class="auth-icon">🔐</div>
+            <h2>Welcome Back</h2>
+            <p class="auth-subtitle">Sign in to your account to continue</p>
 
-        <form id="loginForm">
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="you@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+                <div class="btn-group">
+                    <button type="submit" class="btn-primary btn-full">🚀 Login</button>
+                </div>
+            </form>
 
-            <input
-                type="email"
-                id="email"
-                placeholder="Enter Email"
-                required
-            >
-
-            <input
-                type="password"
-                id="password"
-                placeholder="Enter Password"
-                required
-            >
-
-            <button type="submit">
-
-                Login
-
-            </button>
-
-        </form>
-
-        <p>
-
-            Don't have account?
-
-            <a href="register.html">
-
-                Register
-
-            </a>
-
-        </p>
-
+            <div class="auth-footer">
+                Don't have an account? <a href="register.html">Register here</a>
+                <br><br>
+                <a href="index.html">← Back to Home</a>
+            </div>
+        </div>
     </div>
 
+    <script src="app.js"></script>
     <script>
-
         const form = document.getElementById('loginForm');
-
         form.addEventListener('submit', async (e) => {
-
             e.preventDefault();
-
             const email = document.getElementById('email').value;
-
             const password = document.getElementById('password').value;
-
             try {
-
-                const response = await fetch(
-
-                    'http://localhost:3000/api/users/login',
-
-                    {
-
-                        method: 'POST',
-
-                        headers: {
-
-                            'Content-Type': 'application/json'
-                        },
-
-                        body: JSON.stringify({
-
-                            email,
-                            password
-                        })
-                    }
-                );
-
+                const response = await fetch('/api/users/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
                 const data = await response.json();
-
                 if (data.token) {
-
                     localStorage.setItem('token', data.token);
-
-                    alert('Login Successful');
-
-                    window.location.href = 'index.html';
-
+                    showToast('Login Successful! 🎉');
+                    setTimeout(() => { window.location.href = 'index.html'; }, 1000);
                 } else {
-
-                    alert(data.message || data.error);
+                    showToast(data.message || data.error, 'error');
                 }
-
             } catch (error) {
-
                 console.log(error);
-
-                alert('Login Failed');
+                showToast('Login Failed', 'error');
             }
         });
-
     </script>
-
 </body>
-
 </html>

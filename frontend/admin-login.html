@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admin login for FoodExpress dashboard.">
+    <title>Admin Login — FoodExpress</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🍔</span>
+            <span>FoodExpress</span>
+        </a>
+    </nav>
+
+    <!-- ADMIN LOGIN -->
+    <div class="auth-page">
+        <div class="auth-container">
+            <div class="auth-icon">🛡️</div>
+            <h2>Admin Login</h2>
+            <p class="auth-subtitle">Enter admin credentials to continue</p>
+
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <label for="adminUser">Username</label>
+                    <input type="text" id="adminUser" placeholder="Enter username" required>
+                </div>
+                <div class="form-group">
+                    <label for="adminPass">Password</label>
+                    <input type="password" id="adminPass" placeholder="Enter password" required>
+                </div>
+                <div class="btn-group">
+                    <button type="submit" class="btn-primary btn-full">🛡️ Admin Login</button>
+                </div>
+            </form>
+
+            <div class="auth-footer">
+                <a href="index.html">← Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('adminUser').value;
+            const password = document.getElementById('adminPass').value;
+
+            if (username === 'name' && password === 'pass') {
+                showToast('Admin Login Successful 🛡️');
+                setTimeout(() => { window.location.href = 'admin.html'; }, 1000);
+            } else {
+                alert('Invalid Admin Credentials');
+            }
+        });
+    </script>
+</body>
+</html>

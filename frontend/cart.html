@@ -1,9 +1,45 @@
-<h1>My Cart</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Review and checkout your FoodExpress cart.">
+    <title>Cart — FoodExpress</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<div id="cart-container"></div>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🍔</span>
+            <span>FoodExpress</span>
+        </a>
+        <button class="hamburger" onclick="toggleNav()" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links" id="navLinks"></div>
+    </nav>
 
-<button onclick="checkout()">
-    Checkout
-</button>
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+        <h1>🛒 My Cart</h1>
+        <p>Review your items before checkout</p>
+    </div>
 
-<script src="app.js"></script>
+    <!-- CART ITEMS -->
+    <div id="cart-container"></div>
+
+    <!-- CHECKOUT -->
+    <div class="checkout-bar">
+        <button class="btn-checkout" onclick="checkout()">💳 Proceed to Checkout</button>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2026 <span>FoodExpress</span>. All rights reserved.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

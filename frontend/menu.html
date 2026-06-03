@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse the FoodExpress menu and order your favorite dishes.">
+    <title>Menu — FoodExpress</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🍔</span>
+            <span>FoodExpress</span>
+        </a>
+        <button class="hamburger" onclick="toggleNav()" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links" id="navLinks">
+            <a href="menu.html" class="active">Menu</a>
+            <a href="cart.html">Cart</a>
+            <a href="orders.html">Orders</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🔥 #1 Food Delivery Platform</div>
+            <h1>Delicious Food,<br><span class="highlight">Delivered Fast</span></h1>
+            <p>Order from the best restaurants near you. Fresh, fast, and always delicious.</p>
+            <div class="search-wrapper">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" placeholder="Search for burgers, pizza, pasta..."
+                    onkeyup="searchFoods()">
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOD SECTION -->
+    <div class="section-title">
+        <h2>🍽️ Our Menu</h2>
+        <p>Handpicked dishes made with love</p>
+    </div>
+
+    <div id="food-container"></div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2026 <span>FoodExpress</span>. All rights reserved.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

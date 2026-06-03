@@ -1,70 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Admin Panel</title>
-
-    <link rel="stylesheet"
-          href="style.css">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FoodExpress Admin Panel — Manage food items.">
+    <title>Admin Dashboard — FoodExpress</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <div class="navbar">
-
-        <a href="adminHome.html">
-            <button>Home</button>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🍔</span>
+            <span>FoodExpress</span>
         </a>
-
-        <a href="adminOrders.html">
-            <button>Orders</button>
-        </a>
-
-    </div>
-
-    <h1>Admin Food Management</h1>
-
-    <div class="food-card">
-
-        <input
-            type="text"
-            id="foodName"
-            placeholder="Food Name"
-        >
-
-        <input
-            type="number"
-            id="foodPrice"
-            placeholder="Food Price"
-        >
-
-        <input
-            type="text"
-            id="foodImage"
-            placeholder="Image Name (pizza.jpg)"
-        >
-
-        <button onclick="addFood()">
-
-            Add Food
-
+        <button class="hamburger" onclick="toggleNav()" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
         </button>
+        <div class="nav-links" id="navLinks">
+            <a href="admin.html" class="active">Dashboard</a>
+            <a href="adminOrders.html">Orders</a>
+            <a href="index.html">← Exit Admin</a>
+        </div>
+    </nav>
 
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+        <h1>⚙️ Admin Dashboard</h1>
+        <p>Manage your food menu</p>
     </div>
 
-    <h2>All Foods</h2>
+    <!-- ADD FOOD FORM -->
+    <div class="admin-form-section">
+        <div class="admin-card">
+            <h2>➕ Add New Food</h2>
+            <div class="form-group">
+                <label for="foodName">Food Name</label>
+                <input type="text" id="foodName" placeholder="e.g. Margherita Pizza">
+            </div>
+            <div class="form-group">
+                <label for="foodPrice">Price ($)</label>
+                <input type="number" id="foodPrice" placeholder="e.g. 12.99">
+            </div>
+            <div class="form-group">
+                <label for="foodImage">Image Filename</label>
+                <input type="text" id="foodImage" placeholder="e.g. pizza.jpg">
+            </div>
+            <button class="btn-primary btn-full" onclick="addFood()">🚀 Add Food</button>
+        </div>
+    </div>
+
+    <!-- FOOD LIST -->
+    <div class="section-title">
+        <h2>🍕 All Foods</h2>
+        <p>Edit or remove items from the menu</p>
+    </div>
 
     <div id="admin-foods"></div>
 
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2026 <span>FoodExpress</span>. All rights reserved.</p>
+    </footer>
+
     <script src="app.js"></script>
-
 </body>
-
 </html>

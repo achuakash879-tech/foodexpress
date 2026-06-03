@@ -5,7 +5,7 @@ const db = require('../config/db');
 
 exports.getFoods = (req, res) => {
 
-    const sql = 'SELECT * FROM foods';
+    const sql = 'SELECT * FROM food_items';
 
     db.query(sql, (err, result) => {
 
@@ -32,19 +32,21 @@ exports.addFood = (req, res) => {
 
         price,
 
+        description,
+
         image
 
     } = req.body;
 
     const sql =
 
-        'INSERT INTO foods (name, price, image) VALUES (?, ?, ?)';
+        'INSERT INTO food_items (name, price, description, image) VALUES (?, ?, ?, ?)';
 
     db.query(
 
         sql,
 
-        [name, price, image],
+        [name, price, description || '', image],
 
         (err, result) => {
 
@@ -73,7 +75,7 @@ exports.deleteFood = (req, res) => {
 
     const sql =
 
-        'DELETE FROM foods WHERE id = ?';
+        'DELETE FROM food_items WHERE id = ?';
 
     db.query(
 
@@ -112,19 +114,21 @@ exports.updateFood = (req, res) => {
 
         price,
 
+        description,
+
         image
 
     } = req.body;
 
     const sql =
 
-        'UPDATE foods SET name=?, price=?, image=? WHERE id=?';
+        'UPDATE food_items SET name=?, price=?, description=?, image=? WHERE id=?';
 
     db.query(
 
         sql,
 
-        [name, price, image, id],
+        [name, price, description || '', image, id],
 
         (err, result) => {
 
